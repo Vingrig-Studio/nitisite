@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    // font-size: .8333vw;
+    font-size: 1.111vw;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    @include mobile {
+        // font-size: 12px;
+        font-size: 4.267vw;
+    }
+}
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F4;
+}
+
+
+hr {
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+    height: 100%;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+p {
+    margin: 0;
+}
+input {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    padding-inline: 3.75rem;
+    @include mobile {
+        padding-inline: 0.75rem;
+    }
+}
+
+.mobile {
+    display: none !important;
+    @include mobile {
+        display: flex !important;
+    }
+}
+
+.desktop {
+    display: flex !important;
+    @include mobile {
+        display: none !important;
+    }
+}
+
+dialog {
+    z-index: 100 !important;
+}
+
+$gray: #7B7B7B;
+$black: #000000;
+$white: #FFFFFF;
+$accent: #A3301A;
+$accent-dark: #460000; 

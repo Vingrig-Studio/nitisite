@@ -1,0 +1,210 @@
+dialog {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.popup-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 80;
+
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+
+    background-color: #F8F8F4;
+
+    overflow-y: scroll;
+
+    display: flex;
+
+    &__text-content {
+        margin-top: 3.5rem;
+
+        &__head-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            svg {
+                width: 1.875rem;
+                height: 1.875rem;
+            }
+
+            p {
+                font-size: 0.75rem;
+                line-height: 130%;
+                letter-spacing: 0.0063rem;
+                color: #2E2D2D;
+            }
+        }
+
+        &__title {
+            margin-top: 1.875rem;
+
+            font-size: 2rem;
+            letter-spacing: -0.0625rem;
+            color: #171717;
+        }
+
+        &__desc {
+            margin-top: 0.625rem;
+
+            width: 100%;
+            font-size: 1.25rem;
+            line-height: 130%;
+            letter-spacing: 0.0125rem;
+            font-weight: 400;
+        }
+
+        &__sub-title {
+            font-size: 1.25rem;
+            letter-spacing: -0.0375rem;
+            color: #171717;
+            font-weight: 500;
+        }
+
+        &__text {
+            letter-spacing: 0.0063rem;
+            font-size: 0.875rem;
+            line-height: 130%;
+            color: #2E2D2D;
+        }
+
+        &__img {
+            width: 100%;
+            height: fit-content;
+        }
+
+        &__tags {
+            display: flex;
+            align-items: center;
+            gap: 0.3125rem;
+        }
+
+        &__tag {
+            padding: 0.625rem 1.375rem;
+            border-radius: 0.3125rem;
+            background-color: #EDEDED;
+
+            color: #747474;
+            font-size: 0.75rem;
+        }
+    }
+
+    &__content {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__header {
+        width: 100%;
+        min-height: 5rem;
+
+        padding-inline: 3.75rem;
+        border-bottom: 0.0625rem solid #B9B9B9;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__title {
+            font-size: 1.5rem;
+            color: #171717;
+            letter-spacing: -0.0875rem;
+            font-weight: 400;
+        }
+
+        &__item {
+            width: 6.25rem;
+            
+            display: flex;
+            align-items: center;
+            gap: 0.9375rem;
+
+            cursor: pointer;
+            
+            p {
+                font-size: 1.25rem;
+                letter-spacing: -0.0375rem;
+                color: #171717;
+            }
+
+            &__back {
+                width: 0.6875rem;
+                height: 1.125rem;
+            }
+            &__send {
+                width: 1.625rem;
+                height: 1.4375rem;
+
+                margin-left: auto;
+            }
+        }
+    }
+
+    &__container {
+        width: 100%;
+        padding-inline: 24.4375rem;
+    }
+
+
+    .mt-10 {
+        margin-top: 0.625rem;
+    }
+
+    .mt-20 {
+        margin-top: 1.25rem;
+    }
+
+    .mt-30 {
+        margin-top: 1.875rem;
+    }
+
+    .mt-40 {
+        margin-top: 2.5rem;
+    }
+}
+
+.watch-more {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    padding-inline: 3.75rem;
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+
+    &__title {
+        font-size: 2rem;
+        letter-spacing: -0.0625rem;
+        color: #171717;
+        font-weight: 500;
+    }
+}
+
+.popup-slide-up-enter-active,
+.popup-slide-up-leave-active {
+    transition: transform 0.4s ease;
+}
+
+.popup-slide-up-enter-from {
+    transform: translateY(100%);
+}
+
+.popup-slide-up-enter-to {
+    transform: translateY(0);
+}
+
+.popup-slide-up-leave-from {
+    transform: translateY(0);
+}
+
+.popup-slide-up-leave-to {
+    transform: translateY(100%);
+}

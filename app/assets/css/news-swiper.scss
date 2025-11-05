@@ -1,0 +1,192 @@
+// Уникальные стили для swiper новостей
+.news-swiper-container {
+    position: relative;
+    
+    @include mobile {
+        padding-left: 0.75rem;
+        overflow: visible;
+        
+        .desktop {
+            display: none !important;
+        }
+    }
+
+    
+    .swiper {
+        max-width: 82.5rem !important;
+        @include mobile {
+            max-width: calc(100vw - 0.75rem) !important;
+            width: calc(100vw - 0.75rem);
+            overflow: visible;
+        }
+    }
+
+    .swiper-slide {
+        max-width: 20.125rem;
+        
+        @include mobile {
+            max-width: 100%;
+            width: auto;
+        }
+    }
+
+    // Кнопки навигации
+    .prev,
+    .next {
+        width: 2.1875rem;
+        height: 5.125rem;
+
+        position: absolute;
+        top: 14rem;
+        z-index: 15;
+
+        border-radius: 0.3125rem;
+        background-color: #E5E0D9;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: none;
+        cursor: pointer;
+    }
+
+    .prev {
+        left: -2.5rem;
+    }
+
+    .next {
+        transform: rotate(180deg);
+        right: -2.5rem;
+    }
+
+    // Эффекты размытия
+    .left-blur {
+        width: 7.75rem;
+        height: 33.125rem;
+
+        background: linear-gradient(270deg, #F8F8F400 0%, #F8F8F4FF 100%);
+
+        position: absolute;
+        left: -3.75rem;
+        top: 0rem;
+
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    .right-blur {
+        width: 7.75rem;
+        height: 33.125rem;
+
+        background: linear-gradient(90deg, #F8F8F400 0%, #F8F8F4FF 100%);
+
+        position: absolute;
+        right: -3.75rem;
+        top: 0rem;
+
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    // Карточка новости
+    .item-swiper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        position: relative;
+        border-radius: 0.625rem;
+        overflow: hidden;
+
+        background-color: #EDEDE6;
+
+        max-width: 20.125rem;
+
+        &__fire {
+            width: 3.125rem;
+            height: 3.125rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 100%;
+        }
+
+        &__img {
+            width: 100%;
+            height: 12.5rem;
+            object-fit: cover;
+        }
+
+        &__texts {
+            display: flex;
+            flex-direction: column;
+            gap: 2.125rem;
+
+            padding: 0rem 1.875rem 2.3125rem;
+        }
+
+        &__button {
+            width: 9.75rem;
+            height: 3.125rem;
+
+            background-color: #650F110F;
+            border-radius: 31.25rem;
+
+            color: #650F11;
+            font-size: 1rem;
+            cursor: pointer;
+            @include mobile {
+                width: 100%;
+            }
+        }
+
+        &__texts-small {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        &__desc {
+            color: #2E2D2D;
+
+            font-size: 0.875rem;
+            line-height: 130%;
+            letter-spacing: 0.0063rem;
+
+            line-clamp: 4;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        &__texts-extra-small {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+        }
+
+        &__title {
+            width: 14rem;
+
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.0437rem;
+        }
+
+        &__date {
+            width: fit-content;
+
+            padding: 0.5rem 0.625rem;
+
+            border: 0.0625rem solid #460000;
+            border-radius: 0.3125rem;
+
+            color: #460000;
+            font-size: 1rem;
+        }
+    }
+}
+

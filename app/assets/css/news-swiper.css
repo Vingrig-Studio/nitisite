@@ -1,0 +1,18 @@
+.news-swiper-container{ position:relative }
+.news-swiper-container .swiper-wrapper,.news-swiper-container .swiper{ max-width:82.5rem !important }
+.news-swiper-container .swiper-slide{ max-width:20.125rem }
+.news-swiper-container .prev,.news-swiper-container .next{ width:2.1875rem; height:5.125rem; position:absolute; top:14rem; z-index:15; border-radius:.3125rem; background-color:#e5e0d9; display:flex; justify-content:center; align-items:center; border:none; cursor:pointer }
+.news-swiper-container .prev{ left:-2.5rem }
+.news-swiper-container .next{ transform:rotate(180deg); right:-2.5rem }
+.news-swiper-container .left-blur{ width:7.75rem; height:33.125rem; background:linear-gradient(270deg,rgba(248,248,244,0) 0%,#f8f8f4 100%); position:absolute; left:-3.75rem; top:0rem; z-index:10; pointer-events:none }
+.news-swiper-container .right-blur{ width:7.75rem; height:33.125rem; background:linear-gradient(90deg,rgba(248,248,244,0) 0%,#f8f8f4 100%); position:absolute; right:-3.75rem; top:0rem; z-index:10; pointer-events:none }
+.news-swiper-container .item-swiper{ display:flex; flex-direction:column; gap:1.25rem; position:relative; border-radius:.625rem; overflow:hidden; background-color:#edede6; max-width:20.125rem }
+.news-swiper-container .item-swiper__fire{ width:3.125rem; height:3.125rem; display:flex; justify-content:center; align-items:center; border-radius:100% }
+.news-swiper-container .item-swiper__img{ width:100%; height:12.5rem; object-fit:cover }
+.news-swiper-container .item-swiper__texts{ display:flex; flex-direction:column; gap:2.125rem; padding:0rem 1.875rem 2.3125rem }
+.news-swiper-container .item-swiper__button{ width:9.75rem; height:3.125rem; background-color:rgba(101,15,17,.0588235294); border-radius:31.25rem; color:#650f11; font-size:1rem; cursor:pointer }
+.news-swiper-container .item-swiper__texts-small{ display:flex; flex-direction:column; gap:1.25rem }
+.news-swiper-container .item-swiper__desc{ color:#2e2d2d; font-size:.875rem; line-height:130%; letter-spacing:.0063rem; line-clamp:4; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden }
+.news-swiper-container .item-swiper__texts-extra-small{ display:flex; flex-direction:column; gap:.625rem }
+.news-swiper-container .item-swiper__title{ width:14rem; font-size:1.5rem; font-weight:500; letter-spacing:-0.0437rem }
+.news-swiper-container .item-swiper__date{ width:fit-content; padding:.5rem .625rem; border:.0625rem solid #460000; border-radius:.3125rem; color:#460000; font-size:1rem }

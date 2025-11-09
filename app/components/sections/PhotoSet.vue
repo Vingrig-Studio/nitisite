@@ -223,7 +223,7 @@
         position: relative;
         &__img {
             width: 100%;
-            height: fit-content;
+            // height: fit-content;
             border-radius: 0.625rem;
         }
     }

@@ -91,13 +91,13 @@ const handleEmailClick = () => {
 
                 <a href="#map" @click="handleLinkClick" class="mobile-menu__how-to-get">Как добраться?</a>
 
-                <button @click="handleSignUpClick" class="mobile-menu__button">Записаться</button>
+                <button @click="handleSignUpClick" class="mobile-menu__button fs-1">Записаться</button>
 
                 <a href="tel:+79999999999" @click="handlePhoneClick" class="mobile-menu__phone">+7 (999) 999-99-99</a>
 
                 <div class="mobile-menu__hours">
-                    <p class="mobile-menu__hours-title">Часы работы:</p>
-                    <p class="mobile-menu__hours-time">10:00-29:00 пн-пт</p>
+                    <p class="mobile-menu__hours-title fs-0-875">Часы работы:</p>
+                    <p class="mobile-menu__hours-time fs-0-875">10:00-29:00 пн-пт</p>
                 </div>
 
                 <div class="mobile-menu__social">
@@ -126,8 +126,8 @@ const handleEmailClick = () => {
                 </div>
 
                 <div class="mobile-menu__email" @click="handleEmailClick" style="cursor: pointer;">
-                    <p class="mobile-menu__email-address">niti@gmail.com</p>
-                    <p class="mobile-menu__email-desc">по всем вопросам</p>
+                    <p class="mobile-menu__email-address fs-0-875">niti@gmail.com</p>
+                    <p class="mobile-menu__email-desc fs-0-875">по всем вопросам</p>
                 </div>
             </div>
         </div>
@@ -173,7 +173,6 @@ const handleEmailClick = () => {
                 gap: 0.75rem;
             
                 p {
-                    font-size: 1rem;
                     color: #171717;
                     letter-spacing: -0.0313rem;
                 }
@@ -203,7 +202,6 @@ const handleEmailClick = () => {
         }
 
         &__link {
-            font-size: 1.25rem;
             font-weight: 400;
             color: #2E2D2D;
             text-decoration: none;
@@ -215,7 +213,6 @@ const handleEmailClick = () => {
         }
 
         &__how-to-get {
-            font-size: 0.875rem;
             color: #2E2D2D;
             text-decoration: underline;
             text-align: center;
@@ -227,7 +224,6 @@ const handleEmailClick = () => {
             height: 3.125rem;
             background-color: #A43033;
             color: white;
-            font-size: 1rem;
             font-weight: 400;
             border: none;
             border-radius: 31.25rem;
@@ -235,7 +231,6 @@ const handleEmailClick = () => {
         }
 
         &__phone {
-            font-size: 1rem;
             font-weight: 500;
             color: #A43033;
             text-decoration: none;
@@ -251,13 +246,11 @@ const handleEmailClick = () => {
             margin-top: 1.25rem;
 
             &-title {
-                font-size: 0.875rem;
                 color: #2E2D2D;
                 margin-bottom: 0.25rem;
             }
 
             &-time {
-                font-size: 0.875rem;
                 font-weight: 500;
                 color: #2E2D2D;
             }
@@ -291,14 +284,12 @@ const handleEmailClick = () => {
             margin-top: 1.4375rem;
 
             &-address {
-                font-size: 1.5rem;
                 font-weight: 500;
                 color: #2E2D2D;
                 margin-bottom: 0.25rem;
             }
 
             &-desc {
-                font-size: 0.75rem;
                 color: #7B7B7B;
             }
         }

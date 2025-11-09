@@ -6,6 +6,7 @@
 html {
   margin: 0;
   padding: 0;
+  --font-scale: 1;
   font-size: 16px;
   font-size: 1.111vw;
   scroll-behavior: smooth;
@@ -23,6 +24,90 @@ body {
   margin: 0;
   padding: 0;
   background-color: #F8F8F4;
+}
+
+.fs-4 {
+  font-size: calc(4rem * var(--font-scale)) !important;
+}
+
+.fs-2 {
+  font-size: calc(2rem * var(--font-scale)) !important;
+}
+
+.fs-1-5625 {
+  font-size: calc(1.5625rem * var(--font-scale)) !important;
+}
+
+.fs-1-5 {
+  font-size: calc(1.5rem * var(--font-scale)) !important;
+}
+
+.fs-1-25 {
+  font-size: calc(1.25rem * var(--font-scale)) !important;
+}
+
+.fs-1-125 {
+  font-size: calc(1.125rem * var(--font-scale)) !important;
+}
+
+.fs-1 {
+  font-size: calc(1rem * var(--font-scale)) !important;
+}
+
+.fs-0-875 {
+  font-size: calc(0.875rem * var(--font-scale)) !important;
+}
+
+.fs-0-75 {
+  font-size: calc(0.75rem * var(--font-scale)) !important;
+}
+
+.fs-0-625 {
+  font-size: calc(0.625rem * var(--font-scale)) !important;
+}
+
+body.hide-images img, body.hide-images svg[class*=img], body.hide-images .hero-block__swiper img {
+  visibility: hidden !important;
+}
+
+body.theme-dark {
+  background-color: #000 !important;
+  color: white !important;
+}
+body.theme-dark * {
+  color: white !important;
+  border-color: white !important;
+  background-color: #000 !important;
+  fill: #000 !important;
+}
+body.theme-dark .header, body.theme-dark .footer, body.theme-dark .hero-block, body.theme-dark .about, body.theme-dark .history, body.theme-dark .syconcart,
+body.theme-dark .questions, body.theme-dark .news, body.theme-dark .photoset, body.theme-dark .form, body.theme-dark .category,
+body.theme-dark .mobile-menu, body.theme-dark .accessibility-panel__content {
+  background-color: #000 !important;
+  color: white !important;
+}
+body.theme-dark .button-change-theme, body.theme-dark .accessibility-panel__toggle {
+  background-color: #333 !important;
+}
+
+body.theme-brown {
+  background-color: #3b2716 !important;
+  color: #a9e44d !important;
+}
+body.theme-brown * {
+  color: #a9e44d !important;
+  border-color: #a9e44d !important;
+  fill: #3b2716 !important;
+  background-color: #3b2716 !important;
+}
+body.theme-brown .header, body.theme-brown .footer, body.theme-brown .hero-block, body.theme-brown .about, body.theme-brown .history, body.theme-brown .syconcart,
+body.theme-brown .questions, body.theme-brown .news, body.theme-brown .photoset, body.theme-brown .form, body.theme-brown .category,
+body.theme-brown .mobile-menu, body.theme-brown .accessibility-panel__content {
+  background-color: #3b2716 !important;
+  color: #a9e44d !important;
+}
+body.theme-brown .button-change-theme, body.theme-brown .accessibility-panel__toggle {
+  background-color: #5a3d23 !important;
 }
 
 hr {

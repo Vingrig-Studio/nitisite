@@ -19,11 +19,11 @@
 <template>
     <section class="container">
         <div class="questions">
-            <h2 class="questions__title">Частые вопросы</h2>
+            <h2 class="questions__title fs-4">Частые вопросы</h2>
             <div class="questions__content">
                 <div v-for="(item, index) in questions" :key="index" class="item-question">
                     <div class="item-question__top" @click="toggleItem(index)">
-                        <p class="title">
+                        <p class="title fs-1-25">
                             <span class="red">{{ item.questionFirstWord }}</span> {{ item.question.replace(item.questionFirstWord, '').trim() }}
                         </p>
                         <div class="svg-cont" :class="{ active: openItems[index] }">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="item-question__content" :class="{ active: openItems[index] }">
-                        <p class="item-question__answer">{{ item.answer }}</p>
+                        <p class="item-question__answer fs-0-875">{{ item.answer }}</p>
                     </div>
                 </div>
             </div>
@@ -59,12 +59,10 @@
         &__title {
             @include gardenia;
             color: #000;
-            font-size: 4rem;
             // font-weight: 100;
             // text-transform: uppercase;
             @include mobile {
                 font-weight: 400;
-                font-size: 2rem;
                 letter-spacing: -0.1187rem;
             }
         }
@@ -93,12 +91,10 @@
                     cursor: pointer;
                 
                     .title {
-                        font-size: 1.25rem;
                         letter-spacing: -0.0375rem;
                         color: #171717;
 
                         @include mobile {
-                            font-size: 0.875rem;
                             letter-spacing: -0.025rem;
 
                             padding-top: 0.8125rem;
@@ -140,13 +136,11 @@
                 }
                 
                 &__answer {
-                    font-size: 1rem;
                     line-height: 130%;
                     color: #171717;
                     padding-bottom: 0.5rem;
 
                     @include mobile {
-                        font-size: 0.75rem;
                         letter-spacing: 0.0063rem;
                     }
                 }

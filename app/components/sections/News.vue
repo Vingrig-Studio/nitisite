@@ -29,24 +29,24 @@
 <template>
     <section id="events" class="container">
         <div class="news">
-            <h2 class="news__title">Новости и события</h2>
+            <h2 class="news__title fs-4">Новости и события</h2>
             <ItemsCanScroll />
             <div class="news__content">
                 <div class="news__content__category">
                     <button 
-                        class="item-category" 
+                        class="item-category fs-1" 
                         :class="{ active: activeFilter === 'all' }"
                         @click="handleFilterChange('all')">
                         Все
                     </button>
                     <button 
-                        class="item-category"
+                        class="item-category fs-1"
                         :class="{ active: activeFilter === 'articles' }"
                         @click="handleFilterChange('articles')">
                         Статьи
                     </button>
                     <button 
-                        class="item-category"
+                        class="item-category fs-1"
                         :class="{ active: activeFilter === 'events' }"
                         @click="handleFilterChange('events')">
                         Мероприятия
@@ -88,11 +88,11 @@
                                         <div class="item-swiper__texts-small">
                                             <div class="item-swiper__texts-extra-small">
                                                 <div class="item-swiper__date">{{ item.date }}</div>
-                                                <h3 class="item-swiper__title">{{ item.title }}</h3>
+                                                <h3 class="item-swiper__title fs-1-5">{{ item.title }}</h3>
                                             </div>
-                                            <p class="item-swiper__desc">{{ item.desc }}</p>
+                                            <p class="item-swiper__desc fs-0-875">{{ item.desc }}</p>
                                         </div>
-                                        <button class="item-swiper__button" @click="handleOpenPopup(item.type)">Подробнее</button>
+                                        <button class="item-swiper__button fs-1" @click="handleOpenPopup(item.type)">Подробнее</button>
                                     </div>
                                 </div>
                             </SwiperSlide>
@@ -122,12 +122,10 @@
         &__title {
             @include gardenia;
             color: #171717;
-            font-size: 4rem;
             // font-weight: 100;
             // text-transform: uppercase;
             @include mobile {
                 font-weight: 500;
-                font-size: 2rem;
             }
         }
 
@@ -159,7 +157,6 @@
                     padding: 0.9375rem 1.5938rem;
 
                     color: #171717;
-                    font-size: 1rem;
                     
                     background-color: #EDEDE6;
                     border-radius: 31.25rem;

@@ -10,8 +10,8 @@
     <section id="photoalbum" class="container">
         <div class="photoset">
             <div class="photoset__title-block">
-                <h2 class="photoset__title">Фотоотчет</h2>
-                <p class="photoset__desc">Наш проект — площадка для коммуникации <br>
+                <h2 class="photoset__title fs-4">Фотоотчет</h2>
+                <p class="photoset__desc fs-1-5625">Наш проект — площадка для коммуникации <br>
                     молодежи и старшего поколения и передачи бесценного <br> исторического опыта через формы современного искусства</p>
             </div>
             <div class="photoset__category">
@@ -21,7 +21,7 @@
                             <path d="M7.12464 12.8016L3.82339 9.50036L2.69922 10.6166L7.12464 15.042L16.6246 5.54203L15.5084 4.42578L7.12464 12.8016Z" fill="#A43033"/>
                         </svg>
                     </div>
-                    <p class="category-item__text">Туризм</p>
+                    <p class="category-item__text fs-1-5625">Туризм</p>
                 </div>
                 <div class="category-item">
                     <div class="category-item__container">
@@ -29,7 +29,7 @@
                             <path d="M7.12464 12.8016L3.82339 9.50036L2.69922 10.6166L7.12464 15.042L16.6246 5.54203L15.5084 4.42578L7.12464 12.8016Z" fill="#A43033"/>
                         </svg>
                     </div>
-                    <p class="category-item__text">Образование</p>
+                    <p class="category-item__text fs-1-5625">Образование</p>
                 </div>
                 <div class="category-item">
                     <div class="category-item__container">
@@ -37,7 +37,7 @@
                             <path d="M7.12464 12.8016L3.82339 9.50036L2.69922 10.6166L7.12464 15.042L16.6246 5.54203L15.5084 4.42578L7.12464 12.8016Z" fill="#A43033"/>
                         </svg>
                     </div>
-                    <p class="category-item__text">Коммуникации</p>
+                    <p class="category-item__text fs-1-5625">Коммуникации</p>
                 </div>
                 <div class="category-item">
                     <div class="category-item__container">
@@ -45,7 +45,7 @@
                             <path d="M7.12464 12.8016L3.82339 9.50036L2.69922 10.6166L7.12464 15.042L16.6246 5.54203L15.5084 4.42578L7.12464 12.8016Z" fill="#A43033"/>
                         </svg>
                     </div>
-                    <p class="category-item__text">Развлечения</p>
+                    <p class="category-item__text fs-1-5625">Развлечения</p>
                 </div>
             </div>
         </div>
@@ -89,10 +89,28 @@
                     <img class="photoset__swiper__img" src="../../assets/img/photo2.png" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo1.png" alt="Фото" />
+                    <img class="photoset__swiper__img" src="../../assets/img/photo7.jpeg" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo2.png" alt="Фото" />
+                    <img class="photoset__swiper__img" src="../../assets/img/photo3.jpg" alt="Фото" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img class="photoset__swiper__img" src="../../assets/img/photo5.jpg" alt="Фото" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img class="photoset__swiper__img" src="../../assets/img/photo4.jpg" alt="Фото" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img class="photoset__swiper__img" src="../../assets/img/photo6.jpeg" alt="Фото" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img class="photoset__swiper__img" src="../../assets/img/photo8.jpg" alt="Фото" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img class="photoset__swiper__img" src="../../assets/img/photo10.jpg" alt="Фото" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img class="photoset__swiper__img" src="../../assets/img/photo9.jpg" alt="Фото" />
                 </SwiperSlide>
             </Swiper>
         </client-only>
@@ -122,25 +140,21 @@
         &__title {
             @include gardenia;
             color: #171717;
-            font-size: 4rem;
             // font-weight: 100;
             // text-transform: uppercase;
 
             @include mobile {
                 font-weight: 500;
-                font-size: 2rem;
             }
         }
 
         &__desc {
             width: 44.8125rem;
             text-align: center;
-            font-size: 1.5625rem;
             letter-spacing: -0.0625rem;
 
             @include mobile {
                 width: 100%;
-                font-size: 1rem;
                 letter-spacing: -0.0375rem;
             }
         }
@@ -186,12 +200,10 @@
                 
                 }
                 &__text {
-                    font-size: 1.5625rem;
                     letter-spacing: -0.0825rem;
                     color: #2E2D2D;
 
                     @include mobile {
-                        font-size: 1rem;
                         letter-spacing: -0.0375rem;
                     }
                 }
@@ -212,6 +224,7 @@
         &__img {
             width: 100%;
             height: fit-content;
+            border-radius: 0.625rem;
         }
     }
     .prev-photo, .next-photo {

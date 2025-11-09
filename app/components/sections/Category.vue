@@ -2,7 +2,7 @@
     <section class="container">
         <div class="category">
             <div class="category__item">
-                <p class="category__item__text">Экскурсии</p>
+                <p class="category__item__text fs-1-25">Экскурсии</p>
                 <div class="category__item__check">
                     <svg class="category__item__check__svg" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.12464 12.8011L3.82339 9.49988L2.69922 10.6161L7.12464 15.0415L16.6246 5.54154L15.5084 4.42529L7.12464 12.8011Z" fill="#A43033"/>
@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="category__item">
-                <p class="category__item__text">Фестивали</p>
+                <p class="category__item__text fs-1-25">Фестивали</p>
                 <div class="category__item__check">
                     <svg class="category__item__check__svg" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.12464 12.8011L3.82339 9.49988L2.69922 10.6161L7.12464 15.0415L16.6246 5.54154L15.5084 4.42529L7.12464 12.8011Z" fill="#A43033"/>
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="category__item">
-                <p class="category__item__text">Музей</p>
+                <p class="category__item__text fs-1-25">Музей</p>
                 <div class="category__item__check">
                     <svg class="category__item__check__svg" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.12464 12.8011L3.82339 9.49988L2.69922 10.6161L7.12464 15.0415L16.6246 5.54154L15.5084 4.42529L7.12464 12.8011Z" fill="#A43033"/>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="category__item">
-                <p class="category__item__text">Культурный центр</p>
+                <p class="category__item__text fs-1-25">Культурный центр</p>
                 <div class="category__item__check">
                     <svg class="category__item__check__svg" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.12464 12.8011L3.82339 9.49988L2.69922 10.6161L7.12464 15.0415L16.6246 5.54154L15.5084 4.42529L7.12464 12.8011Z" fill="#A43033"/>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="category__item span-2">
-                <p class="category__item__text">Арт-пространство</p>
+                <p class="category__item__text fs-1-25">Арт-пространство</p>
                 <div class="category__item__check">
                     <svg class="category__item__check__svg" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.12464 12.8011L3.82339 9.49988L2.69922 10.6161L7.12464 15.0415L16.6246 5.54154L15.5084 4.42529L7.12464 12.8011Z" fill="#A43033"/>
@@ -84,12 +84,10 @@
             }
 
             &__text {
-                font-size: 1.25rem;
                 letter-spacing: -0.0375rem;
                 color: #171717;
 
                 @include mobile {
-                    font-size: 1rem;
                     letter-spacing: -0.0313rem;
                 }
             }

@@ -1,23 +1,49 @@
 <script setup lang="ts">
+    import { computed } from 'vue'
     import { usePopup } from '~/composable/usePopup';
     import { useShare } from '~/composable/useShare';
-    import { useNews } from '~/composable/useNews';
+    import { useNews, type NewsTextItem } from '~/composable/useNews';
     import { Swiper, SwiperSlide } from 'swiper/vue'
     import 'swiper/css'
 
     const { popupState, setOpen } = usePopup()
     const { shareLink } = useShare()
-    const { relatedItems } = useNews()
+    const { allNewsItems, getNewsById } = useNews()
     
-    // ID статьи (можно получать из пропсов или данных)
-    const articleId = '1' // Пример ID, можно заменить на динамический
+    const currentNewsItem = computed(() => popupState.value.newsItem)
+    
+    const filteredRelatedItems = computed(() => {
+        if (!currentNewsItem.value) return allNewsItems
+        return allNewsItems.filter(item => item.id !== currentNewsItem.value!.id)
+    })
+    
+    const itemsWithPlaceholders = computed(() => {
+        const items = filteredRelatedItems.value
+        const itemsToAdd = 4 - items.length
+        if (itemsToAdd > 0) {
+            const placeholders = Array.from({ length: itemsToAdd }, (_, index) => ({
+                id: -index - 1,
+                type: 'article' as const,
+                date: '',
+                title: '',
+                desc: [],
+                isEmpty: true
+            }))
+            return [...items, ...placeholders]
+        }
+        return items
+    })
     
     const handleShare = () => {
-        shareLink('article', articleId)
+        if (currentNewsItem.value) {
+            shareLink('article', String(currentNewsItem.value.id))
+        }
     }
     
-    const handleOpenRelated = (item: typeof relatedItems[0]) => {
-        setOpen(item.type, true)
+    const handleOpenRelated = (item: typeof allNewsItems[0]) => {
+        if ((item as any).isEmpty || item.id < 0) return
+        const newsItem = getNewsById(item.id)
+        setOpen(item.type, true, undefined, newsItem || null)
     }
 </script>
 
@@ -47,25 +73,19 @@
                     </svg>
                 </div>
             </div>
-            <div class="popup-content__container">
+            <div class="popup-content__container" v-if="currentNewsItem">
                 <div class="popup-content__text-content">
                     <div class="popup-content__text-content__head-info">
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.9854 0L15.4062 10.3239L17.6637 0.241056L16.2344 10.4742L20.256 0.956477L17.0224 10.77L22.6788 2.12327L17.745 11.2017L24.8544 3.70393L18.3789 11.7555L26.7128 5.64765L18.9037 12.4135L28.1943 7.89197L19.3025 13.1547L29.2512 10.3647L19.5626 13.9553L29.8496 12.9865L19.6756 14.7894L29.9702 15.673L19.6379 15.6302L29.6093 18.3378L19.4506 16.4508L28.7783 20.8954L19.1197 17.2248L27.504 23.2635L18.656 17.9273L25.8273 25.3659L18.0744 18.5357L23.8021 27.1353L17.3934 19.0304L21.4936 28.5145L16.6351 19.3956L18.9759 29.4594L15.8237 19.6195L16.3299 29.9396L14.9854 19.695L13.6408 29.9396L14.147 19.6195L10.9948 29.4594L13.3356 19.3956L8.4771 28.5145L12.5773 19.0304L6.16857 27.1353L11.8963 18.5357L4.14343 25.3659L11.3147 17.9273L2.46675 23.2635L10.851 17.2248L1.19244 20.8954L10.5201 16.4508L0.361433 18.3378L10.3328 15.6302L0.000455856 15.673L10.2951 14.7894L0.121105 12.9865L10.4081 13.9553L0.719503 10.3647L10.6682 13.1547L1.77642 7.89197L11.067 12.4135L3.25788 5.64765L11.5918 11.7555L5.11627 3.70393L12.2257 11.2017L7.29186 2.12327L12.9483 10.77L9.71473 0.956477L13.7363 10.4742L12.307 0.241056L14.5645 10.3239L14.9854 0Z" fill="#A43033"/>
                         </svg>
-                        <p>Отчеты НитиФест · 25.10.2025</p>
+                        <p>{{ currentNewsItem.type === 'article' ? 'Статья' : 'Мероприятие' }} · {{ currentNewsItem.date }}</p>
                     </div>
-                    <h3 class="popup-content__text-content__title">Название новости / статьи</h3>
-                    <h4 class="popup-content__text-content__desc">Мы вынуждены отталкиваться от того, что экономическая повестка сегодняшнего.</h4>
-                    <p class="mt-30">Мы вынуждены отталкиваться от того, что экономическая повестка сегодняшнего дня предопределяет высокую востребованность экспериментов, поражающих по своей масштабности и грандиозности. Но многие известные личности, превозмогая сложившуюся непростую экономическую ситуацию, указаны как претенденты на роль ключевых факторов. Вот вам яркий пример современных тенденций — дальнейшее развитие различных форм деятельности позволяет выполнить важные задания по разработке новых принципов формирования материально-технической и кадровой базы.</p>
-                    <img src="../../assets/img/popupContent.png" alt="Фото из статьи" class="mt-40 popup-content__text-content__img">
-                    <h5 class="popup-content__text-content__sub-title">Второй заголовок</h5>
-                    <p class="mt-20">Мы вынуждены отталкиваться от того, что экономическая повестка сегодняшнего дня предопределяет высокую востребованность экспериментов, поражающих по своей масштабности и грандиозности. Но многие известные личности, превозмогая сложившуюся непростую экономическую ситуацию, указаны как претенденты на роль ключевых факторов. Вот вам яркий пример современных тенденций — дальнейшее развитие различных форм деятельности позволяет выполнить важные задания по разработке новых принципов формирования материально-технической и кадровой базы.</p>
-                    <p class="mt-30">Мы вынуждены отталкиваться от того, что экономическая повестка сегодняшнего дня предопределяет высокую востребованность экспериментов, поражающих по своей масштабности и грандиозности. Но многие известные личности, превозмогая сложившуюся непростую экономическую ситуацию, указаны как претенденты на роль ключевых факторов. Вот вам яркий пример современных тенденций — дальнейшее развитие различных форм деятельности позволяет выполнить важные задания по разработке новых принципов формирования материально-технической и кадровой базы.</p>
-                    <div class="popup-content__text-content__tags mt-30">
-                        <p class="popup-content__text-content__tag">25.10.2025</p>
-                        <p class="popup-content__text-content__tag">25.10.2025</p>
-                    </div>
+                    <h3 class="popup-content__text-content__title">{{ currentNewsItem.title }}</h3>
+                    <template v-for="(contentItem, index) in currentNewsItem.desc" :key="index">
+                        <p v-if="contentItem.type === 'desc'" :class="contentItem.margin">{{ contentItem.value }}</p>
+                        <img v-else-if="contentItem.type === 'img'" :src="contentItem.value" alt="Фото из статьи" :class="`${contentItem.margin} popup-content__text-content__img`">
+                    </template>
                 </div>
             </div>
             <div class="watch-more">
@@ -74,19 +94,22 @@
 
                     <client-only>
                         <Swiper :slides-per-view="4" :space-between="10"
-                                :loop="true"
+                                :watch-overflow="true"
                                 :observer="true" :observe-parents="true"
                         >
-                            <SwiperSlide v-for="item in relatedItems" :key="item.id">
-                                <div class="item-swiper">
-                                    <img class="item-swiper__img" src="../../assets/img/news-img.png" alt="Новость">
-                                    <div class="item-swiper__texts">
+                            <SwiperSlide v-for="item in itemsWithPlaceholders" :key="item.id">
+                                <div class="item-swiper" :class="{ 'item-swiper--empty': (item as any).isEmpty }">
+                                    <img v-if="!(item as any).isEmpty && item.desc.find((d: NewsTextItem) => d.type === 'img')" 
+                                         class="item-swiper__img" 
+                                         :src="item.desc.find((d: NewsTextItem) => d.type === 'img')?.value || '../../assets/img/news-img.png'" 
+                                         alt="Новость">
+                                    <div v-if="!(item as any).isEmpty" class="item-swiper__texts">
                                         <div class="item-swiper__texts-small">
                                             <div class="item-swiper__texts-extra-small">
                                                 <div class="item-swiper__date">{{ item.date }}</div>
                                                 <h3 class="item-swiper__title">{{ item.title }}</h3>
                                             </div>
-                                            <p class="item-swiper__desc">{{ item.desc }}</p>
+                                            <p class="item-swiper__desc">{{ item.desc.find((d: NewsTextItem) => d.type === 'desc')?.value || '' }}</p>
                                         </div>
                                         <button class="item-swiper__button" @click="handleOpenRelated(item)">Подробнее</button>
                                     </div>
@@ -102,5 +125,8 @@
 </template>
 
 <style lang="scss" scoped>
-
+    .item-swiper--empty {
+        visibility: hidden;
+        pointer-events: none;
+    }
 </style>

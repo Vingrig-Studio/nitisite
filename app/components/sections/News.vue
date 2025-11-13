@@ -5,11 +5,11 @@
     import { Navigation } from 'swiper/modules'
     import 'swiper/css/navigation'
     import { usePopup } from '~/composable/usePopup'
-    import { useNews } from '~/composable/useNews'
+    import { useNews, type NewsTextItem } from '~/composable/useNews'
 
     const modules = [Navigation]
     const { setOpen } = usePopup()
-    const { getFilteredNews } = useNews()
+    const { getFilteredNews, getNewsById } = useNews()
 
     const activeFilter = ref<'all' | 'articles' | 'events'>('all')
 
@@ -17,12 +17,40 @@
         return getFilteredNews(activeFilter.value)
     })
 
+    const itemsWithPlaceholders = computed(() => {
+        const items = filteredNewsItems.value
+        const itemsToAdd = 4 - items.length
+        if (itemsToAdd > 0) {
+            const placeholders = Array.from({ length: itemsToAdd }, (_, index) => ({
+                id: -index - 1,
+                type: 'article' as const,
+                date: '',
+                title: '',
+                desc: [],
+                isEmpty: true
+            }))
+            return [...items, ...placeholders]
+        }
+        return items
+    })
+
+    const swiperBreakpoints = computed(() => {
+        return {
+            769: {
+                slidesPerView: 'auto',
+                spaceBetween: 10
+            }
+        }
+    })
+
     const handleFilterChange = (filter: 'all' | 'articles' | 'events') => {
         activeFilter.value = filter
     }
 
-    const handleOpenPopup = (type: 'article' | 'event') => {
-        setOpen(type, true)
+    const handleOpenPopup = (item: { id: number, type: 'article' | 'event' }) => {
+        if ((item as any).isEmpty || item.id < 0) return
+        const newsItem = getNewsById(item.id)
+        setOpen(item.type, true, undefined, newsItem || null)
     }
 </script>
 
@@ -70,29 +98,27 @@
 
                     <client-only>
                         <Swiper :modules="modules" 
-                                :slides-per-view="1.1"
+                                :slides-per-view="'auto'"
                                 :space-between="10"
-                                :breakpoints="{
-                                    769: {
-                                        slidesPerView: 4,
-                                        spaceBetween: 10
-                                    }
-                                }"
-                                :observer="true" 
-                                :observe-parents="true"
+                                :breakpoints="swiperBreakpoints"
+                                :watch-overflow="true"
+                                :centered-slides="false"
                                 :navigation="{ nextEl: '.next', prevEl: '.prev' }">
-                            <SwiperSlide v-for="item in filteredNewsItems" :key="item.id">
-                                <div class="item-swiper">
-                                    <img class="item-swiper__img" src="../../assets/img/news-img.png" alt="Новость">
-                                    <div class="item-swiper__texts">
+                            <SwiperSlide v-for="item in itemsWithPlaceholders" :key="item.id">
+                                <div class="item-swiper" :class="{ 'item-swiper--empty': (item as any).isEmpty }">
+                                    <img v-if="!(item as any).isEmpty && item.desc.find((d: NewsTextItem) => d.type === 'img')" 
+                                         class="item-swiper__img" 
+                                         :src="item.desc.find((d: NewsTextItem) => d.type === 'img')?.value || '../../assets/img/news-img.png'" 
+                                         alt="Новость">
+                                    <div v-if="!(item as any).isEmpty" class="item-swiper__texts">
                                         <div class="item-swiper__texts-small">
                                             <div class="item-swiper__texts-extra-small">
                                                 <div class="item-swiper__date">{{ item.date }}</div>
                                                 <h3 class="item-swiper__title fs-1-5">{{ item.title }}</h3>
                                             </div>
-                                            <p class="item-swiper__desc fs-0-875">{{ item.desc }}</p>
+                                            <p class="item-swiper__desc fs-0-875">{{ item.desc.find((d: NewsTextItem) => d.type === 'desc')?.value || '' }}</p>
                                         </div>
-                                        <button class="item-swiper__button fs-1" @click="handleOpenPopup(item.type)">Подробнее</button>
+                                        <button class="item-swiper__button fs-1" @click="handleOpenPopup(item)">Подробнее</button>
                                     </div>
                                 </div>
                             </SwiperSlide>
@@ -167,5 +193,35 @@
                 }
             }
         }
+    }
+
+    .item-swiper--empty {
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    :deep(.swiper-slide) {
+        width: 20.125rem !important;
+        flex-shrink: 0;
+        flex-basis: 20.125rem;
+    }
+
+    @include mobile {
+        :deep(.swiper-slide) {
+            width: 20.4375rem !important;
+            flex-basis: 20.4375rem;
+        }
+    }
+
+    :deep(.item-swiper__title) {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.3;
+        min-height: 2.6em;
+        height: 2.6em;
     }
 </style>

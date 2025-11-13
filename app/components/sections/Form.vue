@@ -141,8 +141,8 @@ function initMap() {
     if (!mapContainer.value) return
 
     const map = new ymaps.Map(mapContainer.value, {
-      center: [56.4977, 60.8356],
-      zoom: 15,
+      center: [56.700276, 60.828647],
+      zoom: 12,
       controls: ['zoomControl', 'fullscreenControl'],
     })
 

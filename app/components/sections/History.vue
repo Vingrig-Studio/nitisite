@@ -1,16 +1,18 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
     import { Swiper, SwiperSlide } from 'swiper/vue'
     import 'swiper/css'
     import { Navigation } from 'swiper/modules'
     import 'swiper/css/navigation'
     import type { Swiper as SwiperType } from 'swiper'
     import { usePopup } from '~/composable/usePopup'
+    import { useHistory, type HistoryTextItem } from '~/composable/useHistory'
     
     const modules = [Navigation]
     const activeIndex = ref(0)
-    const years = [2021, 2022, 2023, 2024, 2025, 2026]
+    const years = [2021, 2022, 2023, 2024, 2025]
     const { setOpen } = usePopup()
+    const { getHistoryByYear } = useHistory()
     
     const onSlideChange = (swiper: SwiperType) => {
         activeIndex.value = swiper.realIndex
@@ -22,7 +24,15 @@
     
     const handleYearClick = (index: number) => {
         activeIndex.value = index
-        setOpen('history', true, index)
+        const year = years[index]
+        if (year !== undefined) {
+            const historyItem = getHistoryByYear(year)
+            setOpen('history', true, index, undefined, historyItem || undefined)
+        }
+    }
+    
+    const getHistoryData = (year: number) => {
+        return getHistoryByYear(year)
     }
 </script>
 
@@ -114,7 +124,7 @@
                         >
                             <SwiperSlide class="swiper-slide" v-for="(year, index) in years" :key="year">
                                 <div class="item-swiper">
-                                    <img src="../../assets/img/history.png" alt="История">
+                                    <img class="item-swiper__img" :src="getHistoryData(year)?.desc.find((d: HistoryTextItem) => d.type === 'img')?.value || '../../assets/img/history.png'" alt="История">
                                     <div class="item-swiper__text-block">
                                         <div class="item-swiper__year">
                                             <p class="item-swiper__year__text fs-4">{{ year }}</p>
@@ -123,8 +133,8 @@
                                             </svg>
                                         </div>
                                         <div class="item-swiper__desc-block">
-                                            <h3 class="title fs-1-5">Начало пути</h3>
-                                            <p class="desc fs-0-875">Здесь нужен текст о том, для чего был создан проект. О том, что это - памятник + памятник чего. Очень кратко. Цель, задача, кто и почему придумал. Не больше этого. Остальное - кнопка.</p>
+                                            <h3 class="title fs-1-5">{{ getHistoryData(year)?.title || 'Начало пути' }}</h3>
+                                            <p class="desc fs-0-875">{{ getHistoryData(year)?.shortDesc || 'Здесь нужен текст о том, для чего был создан проект. О том, что это - памятник + памятник чего. Очень кратко. Цель, задача, кто и почему придумал. Не больше этого. Остальное - кнопка.' }}</p>
                                         </div>
                                         <p @click="handleYearClick(index)" class="item-swiper__link fs-1">Читать подробнее</p>
                                     </div>
@@ -306,6 +316,7 @@
                 &__img {
                     width: 27.0625rem;
                     height: 28.125rem;
+                    object-fit: cover;
                     @include mobile {
                         width: 100%;
                         height: 15.625rem;
@@ -460,5 +471,23 @@
         display: flex;
         flex-direction: column;
         gap: 2.25rem;
+    }
+
+    :deep(.item-swiper__desc-block .title) {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    :deep(.item-swiper__desc-block .desc) {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 </style>

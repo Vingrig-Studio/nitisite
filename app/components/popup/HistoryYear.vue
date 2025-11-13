@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { usePopup } from '~/composable/usePopup';
     import { useShare } from '~/composable/useShare';
+    import { useHistory, type HistoryTextItem } from '~/composable/useHistory';
     import { ref, computed, watch } from 'vue'
     import { Swiper, SwiperSlide } from 'swiper/vue'
     import 'swiper/css'
@@ -8,7 +9,8 @@
 
     const { popupState, setOpen } = usePopup()
     const { shareLink } = useShare()
-    const years = [2021, 2022, 2023, 2024, 2025, 2026]
+    const { getHistoryByYear } = useHistory()
+    const years = [2021, 2022, 2023, 2024, 2025]
     const currentYearIndex = ref(0)
     const swiperInstance = ref<SwiperType | null>(null)
 
@@ -18,6 +20,10 @@
             currentYearIndex.value = newIndex
         }
     })
+    
+    const getCurrentHistoryItem = (year: number) => {
+        return popupState.value.historyItem || getHistoryByYear(year)
+    }
 
     const prevYear = computed(() => {
         const prevIndex = currentYearIndex.value - 1
@@ -91,7 +97,24 @@
                         @slide-change="onSlideChange"
                         @swiper="onSwiper">
                         <SwiperSlide v-for="year in years" :key="year">
-                            <div class="popup-content__text-content">
+                            <div class="popup-content__text-content" v-if="getCurrentHistoryItem(year)">
+                                <div class="popup-content__text-content__head-info">
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.9854 0L15.4062 10.3239L17.6637 0.241056L16.2344 10.4742L20.256 0.956477L17.0224 10.77L22.6788 2.12327L17.745 11.2017L24.8544 3.70393L18.3789 11.7555L26.7128 5.64765L18.9037 12.4135L28.1943 7.89197L19.3025 13.1547L29.2512 10.3647L19.5626 13.9553L29.8496 12.9865L19.6756 14.7894L29.9702 15.673L19.6379 15.6302L29.6093 18.3378L19.4506 16.4508L28.7783 20.8954L19.1197 17.2248L27.504 23.2635L18.656 17.9273L25.8273 25.3659L18.0744 18.5357L23.8021 27.1353L17.3934 19.0304L21.4936 28.5145L16.6351 19.3956L18.9759 29.4594L15.8237 19.6195L16.3299 29.9396L14.9854 19.695L13.6408 29.9396L14.147 19.6195L10.9948 29.4594L13.3356 19.3956L8.4771 28.5145L12.5773 19.0304L6.16857 27.1353L11.8963 18.5357L4.14343 25.3659L11.3147 17.9273L2.46675 23.2635L10.851 17.2248L1.19244 20.8954L10.5201 16.4508L0.361433 18.3378L10.3328 15.6302L0.000455856 15.673L10.2951 14.7894L0.121105 12.9865L10.4081 13.9553L0.719503 10.3647L10.6682 13.1547L1.77642 7.89197L11.067 12.4135L3.25788 5.64765L11.5918 11.7555L5.11627 3.70393L12.2257 11.2017L7.29186 2.12327L12.9483 10.77L9.71473 0.956477L13.7363 10.4742L12.307 0.241056L14.5645 10.3239L14.9854 0Z" fill="#A43033"/>
+                                    </svg>
+                                    <p>Отчеты НитиФест · {{ year }}</p>
+                                </div>
+                                <h3 class="popup-content__text-content__title">{{ getCurrentHistoryItem(year)?.title || `История проекта ${year} года` }}</h3>
+                                <template v-for="(contentItem, index) in getCurrentHistoryItem(year)?.desc" :key="index">
+                                    <p v-if="contentItem.type === 'desc'" :class="contentItem.margin">{{ contentItem.value }}</p>
+                                    <img v-else-if="contentItem.type === 'img'" :src="contentItem.value" alt="Фото из статьи" :class="`${contentItem.margin} popup-content__text-content__img`">
+                                    <h4 v-else-if="contentItem.type === 'title'" :class="`${contentItem.margin} popup-content__text-content__sub-title`">{{ contentItem.value }}</h4>
+                                </template>
+                                <div class="popup-content__text-content__tags mt-30">
+                                    <p class="popup-content__text-content__tag">{{ year }}</p>
+                                </div>
+                            </div>
+                            <div class="popup-content__text-content" v-else>
                                 <div class="popup-content__text-content__head-info">
                                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M14.9854 0L15.4062 10.3239L17.6637 0.241056L16.2344 10.4742L20.256 0.956477L17.0224 10.77L22.6788 2.12327L17.745 11.2017L24.8544 3.70393L18.3789 11.7555L26.7128 5.64765L18.9037 12.4135L28.1943 7.89197L19.3025 13.1547L29.2512 10.3647L19.5626 13.9553L29.8496 12.9865L19.6756 14.7894L29.9702 15.673L19.6379 15.6302L29.6093 18.3378L19.4506 16.4508L28.7783 20.8954L19.1197 17.2248L27.504 23.2635L18.656 17.9273L25.8273 25.3659L18.0744 18.5357L23.8021 27.1353L17.3934 19.0304L21.4936 28.5145L16.6351 19.3956L18.9759 29.4594L15.8237 19.6195L16.3299 29.9396L14.9854 19.695L13.6408 29.9396L14.147 19.6195L10.9948 29.4594L13.3356 19.3956L8.4771 28.5145L12.5773 19.0304L6.16857 27.1353L11.8963 18.5357L4.14343 25.3659L11.3147 17.9273L2.46675 23.2635L10.851 17.2248L1.19244 20.8954L10.5201 16.4508L0.361433 18.3378L10.3328 15.6302L0.000455856 15.673L10.2951 14.7894L0.121105 12.9865L10.4081 13.9553L0.719503 10.3647L10.6682 13.1547L1.77642 7.89197L11.067 12.4135L3.25788 5.64765L11.5918 11.7555L5.11627 3.70393L12.2257 11.2017L7.29186 2.12327L12.9483 10.77L9.71473 0.956477L13.7363 10.4742L12.307 0.241056L14.5645 10.3239L14.9854 0Z" fill="#A43033"/>

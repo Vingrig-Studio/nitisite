@@ -31,22 +31,22 @@
                 </g>
             </svg> -->
             <div class="footer__links desktop">
-                <a href="#" class="link fs-1">
+                <a href="#hero" class="link fs-1">
                     Главная
                 </a>
-                <a href="#" class="link fs-1">
+                <a href="#syconcart" class="link fs-1">
                     СуконкАрт
                 </a>
-                <a href="#" class="link fs-1">
+                <a href="#about-project" class="link fs-1">
                     О проекте
                 </a>
-                <a href="#" class="link fs-1">
+                <a href="#photoalbum" class="link fs-1">
                     Фотоальбом
                 </a>
-                <a href="#" class="link fs-1">
+                <a href="#contacts" class="link fs-1">
                     Контакты
                 </a>
-                <a href="#" class="link fs-1">
+                <a href="#contacts" class="link fs-1">
                     Запись на экскурсии
                 </a>
             </div>

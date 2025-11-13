@@ -29,7 +29,7 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news1.jpg',
+                    value: '/img/news1.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -39,7 +39,7 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news2.jpg',
+                    value: '/img/news2.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -72,7 +72,7 @@ export function useNews() {
             desc: [
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news3.jpg',
+                    value: '/img/news3.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -82,7 +82,7 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news4.jpg',
+                    value: '/img/news4.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -92,7 +92,7 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news5.jpg',
+                    value: '/img/news5.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -102,27 +102,27 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news6.jpg',
+                    value: '/img/news6.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news7.jpg',
+                    value: '/img/news7.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news8.jpg',
+                    value: '/img/news8.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news9.jpg',
+                    value: '/img/news9.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news10.jpg',
+                    value: '/img/news10.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -165,7 +165,7 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news11.jpg',
+                    value: '/img/news11.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -185,12 +185,12 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news12.jpg',
+                    value: '/img/news12.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news13.jpg',
+                    value: '/img/news13.jpg',
                     margin: 'mt-20'
                 },
             ]
@@ -208,7 +208,7 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news14.jpg',
+                    value: '/img/news14.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -218,17 +218,17 @@ export function useNews() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news15.jpg',
+                    value: '/img/news15.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news16.jpg',
+                    value: '/img/news16.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/news17.jpg',
+                    value: '/img/news17.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -252,7 +252,7 @@ export function useNews() {
             desc: [
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/event1.jpg',
+                    value: '/img/event1.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -280,7 +280,7 @@ export function useNews() {
             desc: [
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/event2.jpg',
+                    value: '/img/event2.jpg',
                     margin: 'mt-20'
                 },
                 {

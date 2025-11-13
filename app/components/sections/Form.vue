@@ -183,7 +183,7 @@ const { vkGroup, vkMuseu, tg, email, phone, linkPhone } = useLinks
                 <div class="feedback__contacts">
                     <div class="item-contact">
                         <a :href="`tel:${linkPhone}`" class="title fs-1-5">{{ phone }}</a>
-                        <p class="desc fs-0-875">10:00-20:00 пн-пт</p>
+                        <p class="desc fs-0-875">По предварительной записи</p>
                     </div>
                     <div class="item-contact">
                         <a :href="'mailto:' + email" class="title fs-1-5">{{ email }}</a>

@@ -70,7 +70,7 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/hero-img.png',
+                    value: '/img/hero-img.png',
                     margin: 'mt-40'
                 }
             ]
@@ -162,7 +162,7 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/history.png',
+                    value: '/img/history.png',
                     margin: 'mt-20'
                 }
             ]
@@ -199,7 +199,7 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20231.jpg',
+                    value: '/img/20231.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -209,7 +209,7 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20232.jpg',
+                    value: '/img/20232.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -219,7 +219,7 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20233.jpg',
+                    value: '/img/20233.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -229,7 +229,7 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20234.jpg',
+                    value: '/img/20234.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -261,7 +261,7 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20241.jpg',
+                    value: '/img/20241.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -271,12 +271,12 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20242.jpg',
+                    value: '/img/20242.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20243.jpg',
+                    value: '/img/20243.jpg',
                     margin: 'mt-20'
                 },
                 {
@@ -308,22 +308,22 @@ export function useHistory() {
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20251.jpg',
+                    value: '/img/20251.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20252.jpg',
+                    value: '/img/20252.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20253.jpg',
+                    value: '/img/20253.jpg',
                     margin: 'mt-20'
                 },
                 {
                     type: 'img',
-                    value: '/_nuxt/assets/img/20254.jpg',
+                    value: '/img/20254.jpg',
                     margin: 'mt-20'
                 },
                 {

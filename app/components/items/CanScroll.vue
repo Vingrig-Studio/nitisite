@@ -4,7 +4,7 @@
 <template>
     <div class="can-scroll mobile">
         <p class="can-scroll__text">Листайте фото пальцем влево/вправо</p>
-        <img class="can-scroll__gif" src="../../assets/img/helper.gif" alt="">
+        <img class="can-scroll__gif" src="/img/helper.gif" alt="">
     </div>
 </template>
 

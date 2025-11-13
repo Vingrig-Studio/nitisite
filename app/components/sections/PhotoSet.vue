@@ -83,34 +83,34 @@
                     :observe-parents="true"
                     :navigation="{ nextEl: '.next-photo', prevEl: '.prev-photo' }">
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo1.png" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo1.png" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo2.png" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo2.png" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo7.jpeg" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo7.jpeg" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo3.jpg" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo3.jpg" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo5.jpg" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo5.jpg" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo4.jpg" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo4.jpg" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo6.jpeg" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo6.jpeg" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo8.jpg" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo8.jpg" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo10.jpg" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo10.jpg" alt="Фото" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img class="photoset__swiper__img" src="../../assets/img/photo9.jpg" alt="Фото" />
+                    <img class="photoset__swiper__img" src="/img/photo9.jpg" alt="Фото" />
                 </SwiperSlide>
             </Swiper>
         </client-only>

@@ -124,7 +124,7 @@
                         >
                             <SwiperSlide class="swiper-slide" v-for="(year, index) in years" :key="year">
                                 <div class="item-swiper">
-                                    <img class="item-swiper__img" :src="getHistoryData(year)?.desc.find((d: HistoryTextItem) => d.type === 'img')?.value || '../../assets/img/history.png'" alt="История">
+                                    <img class="item-swiper__img" :src="getHistoryData(year)?.desc.find((d: HistoryTextItem) => d.type === 'img')?.value || '/img/history.png'" alt="История">
                                     <div class="item-swiper__text-block">
                                         <div class="item-swiper__year">
                                             <p class="item-swiper__year__text fs-4">{{ year }}</p>

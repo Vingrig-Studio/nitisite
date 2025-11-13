@@ -108,7 +108,7 @@
                                 <div class="item-swiper" :class="{ 'item-swiper--empty': (item as any).isEmpty }">
                                     <img v-if="!(item as any).isEmpty && item.desc.find((d: NewsTextItem) => d.type === 'img')" 
                                          class="item-swiper__img" 
-                                         :src="item.desc.find((d: NewsTextItem) => d.type === 'img')?.value || '../../assets/img/news-img.png'" 
+                                         :src="item.desc.find((d: NewsTextItem) => d.type === 'img')?.value || '/img/news-img.png'" 
                                          alt="Новость">
                                     <div v-if="!(item as any).isEmpty" class="item-swiper__texts">
                                         <div class="item-swiper__texts-small">

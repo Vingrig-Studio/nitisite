@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="syconcart__info-block__content">
-                    <img class="syconcart__info-block__content__img" src="../../assets/img/suconcart.png" alt="">
+                    <img class="syconcart__info-block__content__img" src="/img/suconcart.png" alt="">
                     <p class="syconcart__info-block__content__desc fs-0-875">Команда и участники проекта «Нити х Нити» в 2024 году</p>
                 </div>
             </div>

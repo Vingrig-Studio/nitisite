@@ -59,7 +59,7 @@
 
             </div>
             <div class="about__info-block">
-                <img class="about__info-block__img" src="../../assets/img/about.png" alt="О проекте">
+                <img class="about__info-block__img" src="/img/about.png" alt="О проекте">
             
                 <p class="about__info-block__desc ">Мы создали «Нити х Нити» в 2021 году, как память об <span class="red">Арамильской суконной фабрике</span> братьев Злоказовых.</p>
 

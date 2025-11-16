@@ -126,6 +126,7 @@
                         :space-between="0"
                         :initial-slide="currentYearIndex"
                         :auto-height="true"
+                        :allow-touch-move="false"
                         :observer="true" 
                         :observe-parents="true"
                         @slide-change="onSlideChange"

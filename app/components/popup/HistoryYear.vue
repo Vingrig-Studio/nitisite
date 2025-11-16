@@ -140,6 +140,7 @@
                                     <p>Отчеты НитиФест · {{ year }}</p>
                                 </div>
                                 <h3 class="popup-content__text-content__title">{{ getCurrentHistoryItem(year)?.title || `История проекта ${year} года` }}</h3>
+                                <h4 v-if="getCurrentHistoryItem(year)?.shortDesc" class="mt-20 popup-content__text-content__desc">{{ getCurrentHistoryItem(year)?.shortDesc }}</h4>
                                 <template v-for="(contentItem, index) in getCurrentHistoryItem(year)?.desc" :key="index">
                                     <p v-if="contentItem.type === 'desc'" :class="contentItem.margin">{{ contentItem.value }}</p>
                                     <img v-else-if="contentItem.type === 'img'" :src="contentItem.value" alt="Фото из статьи" :class="`${contentItem.margin} popup-content__text-content__img`">

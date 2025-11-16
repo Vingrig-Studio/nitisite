@@ -7,8 +7,14 @@
     const { loadSettings } = useAccessibility()
 
     const updateBodyOverflow = (isOpen: boolean) => {
-        if (import.meta.client && document?.body) {
-            document.body.style.overflow = isOpen ? 'hidden' : '';
+        if (import.meta.client && document?.body && document?.documentElement) {
+            if (isOpen) {
+                document.body.style.overflow = 'hidden'
+                document.documentElement.style.overflow = 'hidden'
+            } else {
+                document.body.style.overflow = ''
+                document.documentElement.style.overflow = ''
+            }
         }
     }
 

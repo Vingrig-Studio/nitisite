@@ -11,18 +11,36 @@
     const { shareLink } = useShare()
     const { getHistoryByYear } = useHistory()
     const years = [2021, 2022, 2023, 2024, 2025]
-    const currentYearIndex = ref(0)
+    const currentYearIndex = ref(popupState.value.historyYearIndex ?? 0)
     const swiperInstance = ref<SwiperType | null>(null)
 
+    watch(() => popupState.value.isOpen, (isOpen) => {
+        if (isOpen && popupState.value.popupType === 'history') {
+            const index = popupState.value.historyYearIndex ?? 0
+            if (index >= 0 && index < years.length) {
+                currentYearIndex.value = index
+                if (swiperInstance.value) {
+                    swiperInstance.value.slideTo(index)
+                    setTimeout(() => {
+                        swiperInstance.value?.updateAutoHeight()
+                    }, 100)
+                }
+            }
+        }
+    })
+    
     watch(() => popupState.value.historyYearIndex, (newIndex) => {
         if (swiperInstance.value && newIndex !== undefined && newIndex >= 0 && newIndex < years.length) {
-            swiperInstance.value.slideTo(newIndex)
             currentYearIndex.value = newIndex
+            swiperInstance.value.slideTo(newIndex)
+            setTimeout(() => {
+                swiperInstance.value?.updateAutoHeight()
+            }, 100)
         }
     })
     
     const getCurrentHistoryItem = (year: number) => {
-        return popupState.value.historyItem || getHistoryByYear(year)
+        return getHistoryByYear(year)
     }
 
     const prevYear = computed(() => {
@@ -49,11 +67,25 @@
 
     const onSlideChange = (swiper: SwiperType) => {
         currentYearIndex.value = swiper.activeIndex
+        swiper.updateAutoHeight()
     }
 
     const onSwiper = (swiper: SwiperType) => {
         swiperInstance.value = swiper
-        currentYearIndex.value = swiper.activeIndex
+        if (popupState.value.isOpen && popupState.value.popupType === 'history') {
+            const index = popupState.value.historyYearIndex ?? 0
+            if (index >= 0 && index < years.length && index !== swiper.activeIndex) {
+                swiper.slideTo(index)
+                currentYearIndex.value = index
+            } else {
+                currentYearIndex.value = swiper.activeIndex
+            }
+        } else {
+            currentYearIndex.value = swiper.activeIndex
+        }
+        setTimeout(() => {
+            swiper.updateAutoHeight()
+        }, 100)
     }
     
     const handleShare = () => {
@@ -92,6 +124,8 @@
                     <Swiper 
                         :slides-per-view="1" 
                         :space-between="0"
+                        :initial-slide="currentYearIndex"
+                        :auto-height="true"
                         :observer="true" 
                         :observe-parents="true"
                         @slide-change="onSlideChange"
@@ -113,6 +147,24 @@
                                 <div class="popup-content__text-content__tags mt-30">
                                     <p class="popup-content__text-content__tag">{{ year }}</p>
                                 </div>
+                                <div class="swiper-buttons">
+                                    <button v-if="prevYear" class="swiper-buttons__button left" @click="handlePrev">
+                                        <p class="swiper-buttons__button__year">{{ prevYear }}</p>
+                                        <p class="swiper-buttons__button__text-page">Предыдущий год</p>
+                                        
+                                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.99984 9.99984L1.99969 18L0 16.0003L7.00031 9L0 1.99969L1.99969 0L9.99984 8.00016C10.265 8.26536 10.4139 8.625 10.4139 9C10.4139 9.375 10.265 9.73464 9.99984 9.99984Z" fill="#2E2D2D"/>
+                                        </svg>
+                                    </button>
+                                    <button v-if="nextYear" class="swiper-buttons__button" @click="handleNext">
+                                        <p class="swiper-buttons__button__year">{{ nextYear }}</p>
+                                        <p class="swiper-buttons__button__text-page">Следующий год</p>
+                                        
+                                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.99984 9.99984L1.99969 18L0 16.0003L7.00031 9L0 1.99969L1.99969 0L9.99984 8.00016C10.265 8.26536 10.4139 8.625 10.4139 9C10.4139 9.375 10.265 9.73464 9.99984 9.99984Z" fill="#2E2D2D"/>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                             <div class="popup-content__text-content" v-else>
                                 <div class="popup-content__text-content__head-info">
@@ -132,28 +184,28 @@
                                     <p class="popup-content__text-content__tag">{{ year }}</p>
                                     <p class="popup-content__text-content__tag">25.10.{{ year }}</p>
                                 </div>
+                                <div class="swiper-buttons">
+                                    <button v-if="prevYear" class="swiper-buttons__button left" @click="handlePrev">
+                                        <p class="swiper-buttons__button__year">{{ prevYear }}</p>
+                                        <p class="swiper-buttons__button__text-page">Предыдущий год</p>
+                                        
+                                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.99984 9.99984L1.99969 18L0 16.0003L7.00031 9L0 1.99969L1.99969 0L9.99984 8.00016C10.265 8.26536 10.4139 8.625 10.4139 9C10.4139 9.375 10.265 9.73464 9.99984 9.99984Z" fill="#2E2D2D"/>
+                                        </svg>
+                                    </button>
+                                    <button v-if="nextYear" class="swiper-buttons__button" @click="handleNext">
+                                        <p class="swiper-buttons__button__year">{{ nextYear }}</p>
+                                        <p class="swiper-buttons__button__text-page">Следующий год</p>
+                                        
+                                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.99984 9.99984L1.99969 18L0 16.0003L7.00031 9L0 1.99969L1.99969 0L9.99984 8.00016C10.265 8.26536 10.4139 8.625 10.4139 9C10.4139 9.375 10.265 9.73464 9.99984 9.99984Z" fill="#2E2D2D"/>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </SwiperSlide>
                     </Swiper>
                 </client-only>
-                <div class="swiper-buttons mt-20">
-                    <button v-if="prevYear" class="swiper-buttons__button left" @click="handlePrev">
-                        <p class="swiper-buttons__button__year">{{ prevYear }}</p>
-                        <p class="swiper-buttons__button__text-page">Предыдущий год</p>
-                        
-                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.99984 9.99984L1.99969 18L0 16.0003L7.00031 9L0 1.99969L1.99969 0L9.99984 8.00016C10.265 8.26536 10.4139 8.625 10.4139 9C10.4139 9.375 10.265 9.73464 9.99984 9.99984Z" fill="#2E2D2D"/>
-                        </svg>
-                    </button>
-                    <button v-if="nextYear" class="swiper-buttons__button" @click="handleNext">
-                        <p class="swiper-buttons__button__year">{{ nextYear }}</p>
-                        <p class="swiper-buttons__button__text-page">Следующий год</p>
-                        
-                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.99984 9.99984L1.99969 18L0 16.0003L7.00031 9L0 1.99969L1.99969 0L9.99984 8.00016C10.265 8.26536 10.4139 8.625 10.4139 9C10.4139 9.375 10.265 9.73464 9.99984 9.99984Z" fill="#2E2D2D"/>
-                        </svg>
-                    </button>
-                </div>
             </div>
 
         </div>
@@ -168,7 +220,7 @@
 
 
     .swiper-buttons {
-
+        margin-top: 1.25rem;
         margin-bottom: 2.5rem;
 
         display: grid;

@@ -71,7 +71,7 @@
                         class="item-category fs-1"
                         :class="{ active: activeFilter === 'articles' }"
                         @click="handleFilterChange('articles')">
-                        Статьи
+                        Новости
                     </button>
                     <button 
                         class="item-category fs-1"
@@ -172,7 +172,7 @@
                 margin-inline: auto;
                 
                 @include mobile {
-                    width: 100%;
+                    max-width: calc(100dvw - 0.75rem);
                     margin: 0rem;
                     padding-left: 0.75rem;
                     overflow-x: scroll;

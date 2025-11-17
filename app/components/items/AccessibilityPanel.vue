@@ -155,7 +155,8 @@ onMounted(() => {
         animation: slideIn 0.3s ease;
 
         @include mobile {
-            width: 16rem;
+            // width: 16rem;
+            right: 0rem;
             padding: 1rem;
         }
     }
@@ -213,6 +214,9 @@ onMounted(() => {
     &__options {
         display: flex;
         gap: 0.5rem;
+        @include mobile {
+            flex-direction: column;
+        }
     }
 
     &__option {

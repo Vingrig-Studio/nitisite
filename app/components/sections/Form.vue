@@ -141,13 +141,13 @@ function initMap() {
     if (!mapContainer.value) return
 
     const map = new ymaps.Map(mapContainer.value, {
-      center: [56.703118, 60.843415],
+      center: [56.689754, 60.859720],
       zoom: 12,
       controls: ['zoomControl', 'fullscreenControl'],
     })
 
     const placemark = new ymaps.Placemark(
-      [56.703118, 60.843415],
+      [56.689754, 60.859720],
       {
         balloonContent: 'Арамильская суконная фабрика',
       },

@@ -2,6 +2,8 @@
     import { usePopup } from '~/composable/usePopup';
     import { useAccessibility } from '~/composable/useAccessibility';
     import AccessibilityPanel from '~/components/items/AccessibilityPanel.vue';
+    import PopupGallery from '~/components/popup/Gallery.vue';
+    import ScrollToTop from '~/components/items/ScrollToTop.vue';
 
     const { popupState } = usePopup()
     const { loadSettings } = useAccessibility()
@@ -36,5 +38,7 @@
         <slot />
     </main>
     <Footer />
+    <PopupGallery />
+    <ScrollToTop />
 </template>
 

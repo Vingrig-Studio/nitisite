@@ -8,7 +8,7 @@
 
             <div class="hero-block__info-block">
                 <div class="hero-block__info-block__imgs">
-                    <img class="kazan-img" src="/img/hero-img1.png" alt="Казанский кремль">
+                    <img class="kazan-img" src="/img/hero-img2.png" alt="Казанский кремль">
                     
                     <img class="mkio-img" src="/img/img15.png" alt="">
 
@@ -209,6 +209,7 @@
         
             color: #fff;
             letter-spacing: -0.0375rem;
+            text-align: center;
 
             display: flex;
             justify-content: center;
@@ -243,7 +244,7 @@
         width: 4.375rem;
         height: 4.3125rem;
 
-        filter: invert(1);
+        // filter: invert(1);
 
         @include mobile {
             // width: 3.9375rem;

@@ -1,7 +1,7 @@
 import type { NewsItem } from './useNews'
 import type { HistoryItem } from './useHistory'
 
-export type popupType = 'form' | 'article' | 'history' | 'event' | ''
+export type popupType = 'form' | 'article' | 'history' | 'event' | 'gallery' | ''
 
 export interface IPopup {
     popupType: popupType,

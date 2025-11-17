@@ -198,11 +198,6 @@ export function useHistory() {
                     margin: 'mt-20'
                 },
                 {
-                    type: 'img',
-                    value: '/img/20231.jpg',
-                    margin: 'mt-20'
-                },
-                {
                     type: 'desc',
                     value: 'Фестиваль «Узелки»',
                     margin: 'mt-10'

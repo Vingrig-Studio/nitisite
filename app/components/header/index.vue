@@ -3,7 +3,7 @@ import { usePopup } from '~/composable/usePopup';
 import MobileSidebar from './MobileSidebar.vue';
 import { useLinks } from '~/composable/useSocialLinks';
 
-    const { setOpen } = usePopup()
+    const { popupState, setOpen } = usePopup()
     const isMobileMenuOpen = ref(false)
     const isScrolled = ref(false)
 
@@ -40,7 +40,7 @@ import { useLinks } from '~/composable/useSocialLinks';
 </script>
 
 <template>
-    <header class="container">
+    <header class="container" :class="{ 'header--hidden': popupState.isOpen }">
         <div class="header" :class="{ 'header--scrolled': isScrolled }">
 
             <div class="header__logo-links">
@@ -111,6 +111,10 @@ import { useLinks } from '~/composable/useSocialLinks';
             margin-top: 0.625rem;
     
             height: 4.3125rem;
+
+            &.header--hidden {
+                display: none;
+            }
         }
     }
 

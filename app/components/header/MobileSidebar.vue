@@ -52,7 +52,7 @@ const handleEmailClick = () => {
     <Transition name="sidebar-slide">
         <div v-if="isOpen" class="mobile-menu mobile">
             <div class="mobile-menu__header container">
-                <div class="mobile-menu__header__item">
+                <div class="mobile-menu__header__item" @click="handleClose">
 
                     <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.414221 9.99984L8.41438 18L10.4141 16.0003L3.41375 9L10.4141 1.99969L8.41438 0L0.414221 8.00016C0.149098 8.26536 0.000160217 8.625 0.000160217 9C0.000160217 9.375 0.149098 9.73464 0.414221 9.99984Z" fill="#2E2D2D"/>
@@ -171,6 +171,7 @@ const handleEmailClick = () => {
 
                 display: flex;
                 gap: 0.75rem;
+                cursor: pointer;
             
                 p {
                     color: #171717;
@@ -188,8 +189,7 @@ const handleEmailClick = () => {
             flex: 1;
             display: flex;
             flex-direction: column;
-            // gap: 1.5rem;
-            // padding-bottom: 2rem;
+            
             overflow-y: auto;
         }
 
@@ -221,7 +221,7 @@ const handleEmailClick = () => {
 
         &__button {
             width: 100%;
-            height: 3.125rem;
+            min-height: 3.125rem;
             background-color: #A43033;
             color: white;
             font-weight: 400;

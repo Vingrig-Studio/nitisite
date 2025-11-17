@@ -78,8 +78,9 @@
             z-index: 10;
 
             @include mobile {
-                height: 4.3125rem;
-
+                min-height: 4.3125rem;
+                height: fit-content;
+                
                 padding: 0.9375rem 1.25rem;
             }
 

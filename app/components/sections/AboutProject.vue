@@ -1,5 +1,11 @@
 <script setup lang="ts">
+    import { usePopup } from '~/composable/usePopup'
 
+    const { setOpen } = usePopup()
+
+    const handleGalleryClick = () => {
+        setOpen('gallery', true)
+    }
 </script>
 
 <template>
@@ -61,7 +67,7 @@
             <div class="about__info-block">
                 <img class="about__info-block__img" src="/img/about.png" alt="О проекте">
             
-                <p class="about__info-block__desc ">Мы создали «Нити х Нити» в 2021 году, как память об <span class="red">Арамильской суконной фабрике</span> братьев Злоказовых.</p>
+                <p class="about__info-block__desc ">Мы создали «Нити х Нити» в 2021 году, как память об <span class="red" @click="handleGalleryClick">Арамильской суконной фабрике</span> братьев Злоказовых.</p>
 
                 <div class="about__info-block__facts">
                     <div class="facts-item">
@@ -164,6 +170,7 @@
             }
             .red {
                 color: #A43033;
+                cursor: pointer;
             }
             .bg-svg {
                 width: 94.125rem;
@@ -223,6 +230,7 @@
             }
             .red {
                 color: #A43033;
+                cursor: pointer;
             }
 
             &__facts {
@@ -249,12 +257,12 @@
                         gap: 0.5625rem;
                     }
                     &__svg {
-                        width: 2.4375rem;
-                        height: 2.4375rem;
+                        min-width: 2.4375rem;
+                        min-height: 2.4375rem;
                 
                         @include mobile {
-                            width: 1.875rem;
-                            height: 1.875rem;
+                            min-width: 1.875rem;
+                            min-height: 1.875rem;
                         }
                     }
                     &__text {

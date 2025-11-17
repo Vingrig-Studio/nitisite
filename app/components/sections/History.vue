@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref, computed } from 'vue'
+    import { ref, computed, onMounted, onUnmounted } from 'vue'
     import { Swiper, SwiperSlide } from 'swiper/vue'
     import 'swiper/css'
     import { Navigation } from 'swiper/modules'
@@ -7,12 +7,49 @@
     import type { Swiper as SwiperType } from 'swiper'
     import { usePopup } from '~/composable/usePopup'
     import { useHistory, type HistoryTextItem } from '~/composable/useHistory'
+    import { useAccessibility } from '~/composable/useAccessibility'
     
     const modules = [Navigation]
     const activeIndex = ref(0)
     const years = [2021, 2022, 2023, 2024, 2025]
     const { setOpen } = usePopup()
     const { getHistoryByYear } = useHistory()
+    const { fontSize } = useAccessibility()
+    
+    const isMobile = ref(false)
+    
+    const checkMobile = () => {
+        if (import.meta.client) {
+            isMobile.value = window.matchMedia('(max-width: 768px)').matches
+        }
+    }
+    
+    onMounted(() => {
+        checkMobile()
+        if (import.meta.client) {
+            window.addEventListener('resize', checkMobile)
+        }
+    })
+    
+    onUnmounted(() => {
+        if (import.meta.client) {
+            window.removeEventListener('resize', checkMobile)
+        }
+    })
+    
+    const swiperItemMaxHeight = computed(() => {
+        if (fontSize.value === 'small') {
+            // if (isMobile.value) {
+                return '603px'
+            // }
+            // return undefined
+        } else if (fontSize.value === 'medium') {
+            return '664px'
+        } else if (fontSize.value === 'large') {
+            return '760px'
+        }
+        return undefined
+    })
     
     const onSlideChange = (swiper: SwiperType) => {
         activeIndex.value = swiper.realIndex
@@ -123,7 +160,7 @@
                                 }"
                         >
                             <SwiperSlide class="swiper-slide" v-for="(year, index) in years" :key="year">
-                                <div class="item-swiper">
+                                <div class="item-swiper" :style="{ maxHeight: swiperItemMaxHeight, minHeight: swiperItemMaxHeight, height: swiperItemMaxHeight}">
                                     <img class="item-swiper__img" :src="getHistoryData(year)?.desc.find((d: HistoryTextItem) => d.type === 'img')?.value || '/img/history.png'" alt="История">
                                     <div class="item-swiper__text-block">
                                         <div class="item-swiper__year">
@@ -284,19 +321,25 @@
         &__swiper {
             .item-swiper {
                 width: 54.75rem;
-                height: 28.125rem;
-                
+                height: 100%;
+                // max-height: 47.5rem;
+
                 background-color: #A43033;
                 border-radius: 0.9375rem;
                 overflow: hidden;
 
                 display: flex;
+                align-items: stretch;
 
                 @include mobile {
                     width: 100%;
-                    height: fit-content;
+                    min-height: 0;
+                    max-height: 0;
+                    height: 37.3125rem;
+                    // height: auto;
 
                     flex-direction: column-reverse;
+                    justify-content: space-between;
                 }
                 &__link {
                     margin-top: auto;
@@ -312,30 +355,36 @@
 
                     cursor: pointer;
 
+                    padding-top: 2.1875rem;
+
+                    @include mobile {
+                        padding-top: 1.25rem;
+                    }
                 }
                 &__img {
                     width: 27.0625rem;
-                    height: 28.125rem;
+                    // max-height: 1rem;
                     object-fit: cover;
                     @include mobile {
                         width: 100%;
+                        // height: auto;
                         height: 15.625rem;
                     }
                 }
                 &__text-block {
                     width: 100%;
-                    height: 100%;
+                    height: auto;
 
                     padding: 3.125rem;
 
                     display: flex;
                     flex-direction: column;
-                    gap: 3.75rem;
+                    // gap: 3.75rem;
 
                     @include mobile {
                         padding: 1.5rem 1.875rem 2rem 1.5rem;
 
-                        gap: 1.25rem;
+                        // gap: 1.25rem;
                     }
                 }
 
@@ -344,8 +393,12 @@
                     flex-direction: column;
                     gap: 1.25rem;
 
+                    padding-top: 3.75rem;
+
                     @include mobile {
                         gap: 1.5rem;
+
+                        padding-top: 1.25rem;
                     }
                     .title {
                         font-weight: 500;
@@ -489,5 +542,9 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+        @include mobile {
+            -webkit-line-clamp: 6;
+            line-clamp: 6;
+        }
     }
 </style>

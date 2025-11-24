@@ -219,7 +219,7 @@ const { vkGroup, vkMuseu, tg, email, phone, linkPhone } = useLinks
                 </div>
             </div>
 
-            <iframe 
+            <!-- <iframe 
                 ref="myIframe"
                 id="frame-form"
                 src="https://forms.yandex.ru/u/68fdf22f90fa7b7457cf8339?iframe=1" 
@@ -227,7 +227,7 @@ const { vkGroup, vkMuseu, tg, email, phone, linkPhone } = useLinks
                 name="ya-form-68fdf22f90fa7b7457cf8339" 
                 width="100%"
                 height="fit-content">
-            </iframe>
+            </iframe> -->
 
             <!-- <form class="form-block">
                 <p class="form-block__title fs-1-5625">Запишитесь на экскурсию по Арамильской суконной фабрике!</p>
@@ -330,6 +330,8 @@ const { vkGroup, vkMuseu, tg, email, phone, linkPhone } = useLinks
         display: flex;
         flex-direction: column;
         gap: 1.75rem;
+
+        grid-column: span 2;
 
         @include mobile {
             max-width: 21.9375rem;

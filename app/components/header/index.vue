@@ -75,7 +75,8 @@ import { useLinks } from '~/composable/useSocialLinks';
                             </defs>
                         </svg>
                     </a>
-                    <button @click="setOpen('form', true)" class="sign fs-1">Записаться</button>
+                    <a class="sign" href="#contacts">Записаться</a>
+                    <!-- <button @click="setOpen('form', true)" class="sign fs-1">Записаться</button> -->
                     <button @click="toggleMobileMenu" class="burger mobile">
                         <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_18492_210)">
@@ -95,7 +96,7 @@ import { useLinks } from '~/composable/useSocialLinks';
         </div>
     </header>
 
-    <MobileSidebar :is-open="isMobileMenuOpen" @close="toggleMobileMenu" />
+    <!-- <MobileSidebar :is-open="isMobileMenuOpen" @close="toggleMobileMenu" /> -->
 
     <!-- <button class="button-change-theme">
         <svg class="button-change-theme__svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -230,6 +231,10 @@ import { useLinks } from '~/composable/useSocialLinks';
 
                 font-weight: 500;
                 color: #650F11;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 @include mobile {
                     width: 8.625rem;

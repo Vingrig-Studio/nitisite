@@ -60,7 +60,7 @@ import { useLinks } from '~/composable/useSocialLinks';
             </div>
 
             <div class="header__info">
-                <a href="#contacts" class="header__info__how-get-there desktop fs-0-75">Как добравться?</a>
+                <a href="#contacts" class="header__info__how-get-there desktop fs-0-75">Как добраться?</a>
                 <div class="header__buttons">
                     <a :href="vkGroup" target="_blank" class="vk desktop">
 
